@@ -1,0 +1,101 @@
+[
+    {
+        "productImg": "https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg",
+        "productName": "Biryani",
+        "category": "Non-veg",
+        " price": [
+            "120",
+            "180"
+        ],
+        "description": "Indulge in our exquisite biryani, a tantalizing fusion of aromatic basmati rice, succulent meats, and a symphony of spices. An enchanting culinary journey that captures the essence of South Asia's rich flavors, exclusively at our restaurant.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken-.jpg",
+        "productName": "Butter Chicken",
+        "category": "Non-veg",
+        " price": [
+            "250",
+            "320"
+        ],
+        "description": "Savor our iconic Butter Chicken, a culinary masterpiece featuring tender tandoori-grilled chicken enveloped in a velvety tomato and cream sauce. A symphony of rich flavors awaits, redefining your dining experience at our restaurant.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://www.cookwithmanali.com/wp-content/uploads/2015/07/Restaurant-Style-Recipe-Paneer-Tikka-500x500.jpg",
+        "productName": "Paneer Tikka",
+        "category": "Veg",
+        " price": [
+            "200",
+            "280"
+        ],
+        "description": "Discover Paneer Tikka perfection at our restaurant.Delight in marinated paneer, tandoor- charred to smoky perfection, served with zesty chutney.A vegetarian delight that embodies India's authentic flavors, ready to enchant your palate.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://www.cookwithmanali.com/wp-content/uploads/2015/07/Restaurant-Style-Recipe-Paneer-Tikka-500x500.jpg",
+        "productName": "Dal makhni",
+        "category": "Veg",
+        " price": [
+            "200",
+            "280"
+        ],
+        "description": "Experience Dal Makhani like never before at our restaurant.Immerse in the creamy, slow- cooked blend of black lentils and spices, creating a harmonious dish that's both comforting and exquisite. A taste of tradition that will leave you craving more.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://www.cookwithmanali.com/wp-content/uploads/2015/07/Restaurant-Style-Recipe-Paneer-Tikka-500x500.jpg",
+        "productName": "Rogan Josh",
+        "category": "Non-veg",
+        " price": [
+            "300",
+            "450"
+        ],
+        "description": "Elevate your taste journey with Rogan Josh at our restaurant. Relish tender, slow-cooked meat steeped in aromatic spices, crafting a rich and unforgettable masterpiece. An authentic Kashmiri delight that invites you to savor the art of flavor.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://static.toiimg.com/thumb/53192600.cms?imgsize=418831&width=800&height=800",
+        "productName": "Rogan Josh",
+        "category": "Non-veg",
+        " price": [
+            "300",
+            "450"
+        ],
+        "description": "Elevate your taste journey with Rogan Josh at our restaurant. Relish tender, slow-cooked meat steeped in aromatic spices, crafting a rich and unforgettable masterpiece. An authentic Kashmiri delight that invites you to savor the art of flavor.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://myfoodstory.com/wp-content/uploads/2021/08/spicy-fish-curry-with-coconut-and-tamarind-6-500x375.jpg",
+        "productName": "Fish Curry",
+        "category": "Non-veg",
+        " price": [
+            "300",
+            "450"
+        ],
+        "description": "Dive into the flavors of our Fish Curry, a symphony of fresh catch simmered in fragrant spices and coconut milk.A coastal delight that transports you to the shores of culinary excellence, exclusively at our restaurant.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://myfoodstory.com/wp-content/uploads/2021/08/spicy-fish-curry-with-coconut-and-tamarind-6-500x375.jpg",
+        "productName": "Fish fry",
+        "category": "Non-veg",
+        " price": [
+            "300",
+            "450"
+        ],
+        "description": "Delight in our Fish Fry, where succulent fish fillets are expertly seasoned and crisped to perfection. A satisfying dish that captures the essence of coastal indulgence, inviting you to savor a crunchy and flavorful experience at our restaurant.",
+        "quantity": 10
+    },
+    {
+        "productImg": "https://static.toiimg.com/photo/77005986.cms",
+        "productName": "Grilled Prawns",
+        "category": "Non-veg",
+        " price": [
+            "200",
+            "350"
+        ],
+        "description": "Savor the perfection of Grilled Prawns at our restaurant. Juicy prawns, marinated and char-grilled to succulent perfection, offering a delightful play of smoky flavors. A seafood delicacy that promises an unforgettable culinary journey.",
+        "quantity": 10
+    }
+]
