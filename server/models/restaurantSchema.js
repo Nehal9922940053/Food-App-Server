@@ -2,29 +2,34 @@ import mongoose from 'mongoose';
 
 const restaurantSchema = new mongoose.Schema({
     name:{
-        type: 'string',
+        type: String,
         required: true,
     },
     address:{
-        type: 'string',
+        type: String,
         required: true,
     },
+     openingandclosingTime:{
+        type: String,
+        required: true,
+    },
+    phone:{
+        type:Number,
+        required: true,
+        unique: true,
+    },
     email:{
-        type: 'string',
+        type: String,
         unique: true,
         required: true,
     },
     password:{
-        type: 'string',
-        required: true,
-    },
-    openingandclosingtime:{
-        type: 'string',
+        type: String,
         required: true,
     },
     role:{
-        type: 'string',
-        default: 'admin',
+        type: String,
+        default:"admin"
     },
     products:{
         type: Array,

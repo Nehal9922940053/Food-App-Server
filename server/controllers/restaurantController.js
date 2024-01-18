@@ -5,12 +5,12 @@ import { SECRET_KEY, compPass, hashPass } from "../passwordSecurity/pass.js";
 
 
 export const signupRestaurant = async (req, res) => {
-    try {
+    try { 
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-        const { name, email, address, password, openingTime, closingTime } = req.body;
+        const { name, email, address, password, openingandclosingTime, phone } = req.body;
 
         if (!name || name.length < 1) {
-            return res.json({ error: "Restaurant name required" });
+            return res.json({ error: "Restaurant name required" })
         } else if (!email || email.length < 1) {
             return res.json({ error: "Email required" })
         } else if (!emailRegex.test(email)) {
@@ -19,7 +19,7 @@ export const signupRestaurant = async (req, res) => {
             return res.json({ error: "Address required" })
         } else if (!password || password.length < 8) {
             return res.json({ error: "Password must be more than 8 characters" })
-        } else if (!openingTime || !closingTime) {
+        } else if (!openingandclosingTime ||!phone) {
             return res.json({ error: "Opening and closing time required" })
         }
 
@@ -30,7 +30,7 @@ export const signupRestaurant = async (req, res) => {
         } else {
             const hashedPassword = await hashPass(password);
             const newRestaurant = new Restaurant({
-                password: hashedPassword, name, address, email, openingTime, closingTime
+                password: hashedPassword, name, address, email, openingandclosingTime, phone
             });
             await newRestaurant.save();
             return res.json({ success: "Restaurant registered successfully" })
@@ -45,11 +45,10 @@ export const loginRestaurant = async (req, res) => {
     try {
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         const { email, password } = req.body;
-
-       
+        
         if (!email || email.length < 1) {
-            return res.json({ error: "Email required" })
-        } else if (!emailRegex.test(email)) {
+            return res.json({error : "Email is required"})
+        }  else if (!emailRegex.test(email)) {
             return res.json({ error: "Invalid email format" })
         } else if (!password || password.length < 8) {
             return res.json({ error: "Password must be more than 8 characters" })
@@ -62,15 +61,14 @@ export const loginRestaurant = async (req, res) => {
                 const isValid = await compPass(password, restaurant.password);
                 if (!isValid) {
                     return res.json({ error: "Incorrect password" });
-                } else {
+                }else{
                     const token = jwt.sign({ email: restaurant.email, id: restaurant._id, role: restaurant.role }, SECRET_KEY, { expiresIn: "2d" });
                     return res.json({ success: "Logged in successfully", email: restaurant.email, token, role: restaurant.role, restaurantID: restaurant._id })
                 }
             }
         }
-
-
-    } catch (error) {
+    } 
+    catch (error) {
         res.json(error, "error while logging in the restaurant");
     }
 }

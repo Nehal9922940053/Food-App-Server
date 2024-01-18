@@ -7,7 +7,7 @@ const router = Router();
 router.post("/signup", signupRestaurant)
 router.post("/login", loginRestaurant)
 router.put("/changePassword", changePassword);
-router.get("/verifyRestaurant", restaurantVerification, verifyRestaurant)
+router.get("/verifyRestaurant", restaurantVerification, verifyRestaurant);
 
 
 

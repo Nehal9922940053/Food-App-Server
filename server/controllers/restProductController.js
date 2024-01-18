@@ -3,15 +3,11 @@ import Product from '../models/productSchema.js'
 import { BSON } from 'bson'
 import User from "../models/userSchema.js";
 
-
-
-
 export const getAllRestaurantProducts = async (req, res) => {
     try {
         
         const productData = [];
-
-       
+     
         const restaurants = await Restaurant.find();
 
         
@@ -22,7 +18,7 @@ export const getAllRestaurantProducts = async (req, res) => {
                 id: restaurant._id
             }
             productData.push(data)
-        })
+        });
         return res.json({ info: "Products found", productData })
     } catch (error) {
         res.json(error, "error while getting all restaurants products")
@@ -36,7 +32,14 @@ export const addProduct = async (req, res) => {
         const { restaurantID } = req.params;
         const data = req.body;
 
-        if (data.productImg.length < 1 || data.productName.length < 1 || data.desc.length < 1 || data.category.length < 1 || data.price.length < 1 || data.quantity.length < 1) {
+        if (
+            data.productImg.length < 1 || 
+            data.productName.length < 1 || 
+            data.desc.length < 1 || 
+            data.category.length < 1 || 
+            data.price.length < 1 || 
+            data.quantity.length < 1
+            ) {
             return res.json({ info: "Fields cannot be empty" })
         }
 
@@ -48,7 +51,10 @@ export const addProduct = async (req, res) => {
             const product = new Product(data)
             restaurantProduct.push(product);
             await restaurant.save();
-            return res.json({ success: "Product created successfully", product: restaurant.products })
+            return res.json({ 
+                success: "Product created successfully",
+                 product: restaurant.products 
+                });
         }
 
     } catch (error) {
@@ -63,8 +69,18 @@ export const getSingleRestaurantProducts = async (req, res) => {
         if (!restaurant) {
             return res.json({ error: "Restaurant not found" });
         } else {
-            return res.json({ message: "items found", product: { name: restaurant.name, data: restaurant.products, id: restaurant._id, address: restaurant.address, opening: restaurant.openingTime, closing: restaurant.closingTime } })
-        }
+            return res.json({
+                message: "items found",
+                product: {
+                     name: restaurant.name,
+                     data: restaurant.products,
+                     id: restaurant._id,
+                     address: restaurant.address,
+                     openingandclosingTime: restaurant.openingandclosingTime, 
+                     phone: restaurant.phone,
+                    },
+                 });
+            }
     } catch (error) {
         res.json(error, 'error while getting single restaurant products');
     }
@@ -121,7 +137,10 @@ export const deleteProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
         const { restaurantID, data } = req.body;
-        const restaurant = await Restaurant.findOneAndUpdate({ "_id": restaurantID, "products._id": { "$in": [new BSON.ObjectId(data._id)] } },
+         await Restaurant.findOneAndUpdate(
+            { _id: restaurantID,
+             "products._id": { $in: [new BSON.ObjectId(data._id)] }
+             },
             {
                 $set: {
                     "products.$.productName": data.productName,
@@ -156,6 +175,8 @@ export const getOrderedProduct = async (req, res) => {
     }
 }
 
+
+
 export const changeStatus = async (req, res) => {
     try {
         const { orderID, restaurantID } = req.body;
@@ -165,13 +186,17 @@ export const changeStatus = async (req, res) => {
         if (!restaurant) {
             return res.json({ error: "Restaurant not found" })
         } else {
-            await Restaurant.findOneAndUpdate({ "_id": restaurant._id, "orders._id": { $in: [new BSON.ObjectId(orderID)] } },
+            await Restaurant.findOneAndUpdate(
+                { 
+                    _id: restaurant._id,
+                    "orders._id": { $in: [new BSON.ObjectId(orderID)] } 
+                },
 
                 {
                     $set: {
-                        "orders.$.status": true
-                    }
-                })
+                        "orders.$.status": true,
+                    },
+                });
 
             return res.json({ success: "Preparing to deliver" })
         }

@@ -13,15 +13,16 @@ export const signupUser = async (req, res) => {
 
         const {name, email, phone, password} = req.body;
 
-        if (name.length < 1 || email.length < 1 || phone.length < 1 || password.length) {
+         if (name.length < 1 || email.length < 1 || phone.length < 1 || password.length) {
             return res.json({info : "Fields cannot be empty"})
-        } else if (!email) {
+        } else
+         if (!email) {
             return res.json({error : "Email is required"})
         } else if (!emailRegex.test(email)) {
             return res.json({error : "Invalid email format"})
         } else if (!password || password.length < 8) {
             return res.json({error : "Password must be at least more than 8 characters"})
-        } 
+        }
 
 
         const user = await User.findOne({email});
@@ -29,13 +30,10 @@ export const signupUser = async (req, res) => {
             return res.json({error : "User already exists"})
         } else {
             const hashedPassword = await hashPass(password);
-
             const newUser  = new User({
-                name, email, phone, password: hashedPassword
+                password: hashedPassword, name, email, phone
             });
-
             await newUser.save();
-
             return res.status(200).json({ success : "Registered successfully"})
         }
 
@@ -68,11 +66,11 @@ export const loginUser = async (req, res) => {
             if(user.email !== email) {
                 return res.json({ error : "Invalid credentials"})
             }
-            const isValid = await comPass(password, user.password);
+            const isValid = await compPass(password, user.password);
             if(!isValid){
                 return res.json({error :"Incorrect password"});
             }else{
-                const token = jwt.sign({email: email, id: user._id, role: user.role}, SECRET_KEY , {expiresIn: "1d"} )
+                const token = jwt.sign({email: user.email, id: user._id, role: user.role}, SECRET_KEY , {expiresIn: "2d"} )
                 return res.status(200).json({ success : "Logged in successfully", token, userID :user._id, email: user.email, role:user.role })
             }
         }
